@@ -1,7 +1,7 @@
-DROP DATABASE Post
+DROP table Post;
 -- Post
-CREATE DATABASE Post;
-\c Post
+CREATE table Post;
+--\c Post
 
     create table post(
         id int,
@@ -11,6 +11,7 @@ CREATE DATABASE Post;
         descripcion varchar(50),
     primary key (id));
 
+select * from post; --consultamos como quedo la tabla
 
 insert into post(
 id, nombre, fecha, contenido, descripcion)
@@ -20,13 +21,14 @@ insert into post(
 id, nombre, fecha, contenido, descripcion)
 values(2, 'Pamela', now(), 'El segundo post de Pamela', 'Chao soy Pamela');
 
-insert into post(
+insert into post(   --ingreso valores a la tabla
 id, nombre, fecha, contenido, descripcion)
 values(3, 'Carlos', now(), 'El primer post de Carlos', 'Hola soy Carlos');
-rodrigo=# alter table post
-rodrigo-# add titulo varchar(20);
 
-update post set titulo = 'Titulo 1' where id = 1;
+alter table post
+add titulo varchar(20); -- añade una columna a la tabla
+
+update post set titulo = 'Titulo 1' where id = 1; --actualizo datos en la tabla
 update post set titulo = 'Titulo 2' where id = 2;
 update post set titulo = 'Titulo 3' where id = 3;
 
@@ -38,16 +40,16 @@ update post set titulo = 'titulo 4' where id = 4;
 insert into post(
 id, nombre, fecha, contenido, descripcion) values ( 5 , 'Pedro' , now() , 'El segundo post de pedro', ' titulo 5 ' );
 
-delete from post where nombre = 'Carlos';
+delete from post where nombre = 'Carlos'; -- se eliminan todos los registros con el nombre carlos
 
 insert into post(id, nombre, fecha, contenido, descripcion, titulo)
-rodrigo-# values(6, 'Carlos', now(), 'El segundo post de Carlos', 'Volví', 'Titulo 6');
+values(6, 'Carlos', now(), 'El segundo post de Carlos', 'Volví', 'Titulo 6');
 
 
 --Comentarios
 
 create table comentarios(
-rodrigo(# id int, fecha date, hora time, contenido varchar(30), foreign key (id) references post(id));
+id int, fecha date, hora time, contenido varchar(30), foreign key (id) references post(id));
 
 insert into comentarios(id, fecha, hora, contenido)
 values(1, now(), current_time, 'Comentario 1er post Pamela');
