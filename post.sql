@@ -4,10 +4,11 @@ drop table post;
 drop database posts;
 --creo database posts
 create database posts;
-
+-- pon los datos en la base de datos
+\c posts 
 --creo tabla post
 create table post(
-    id int, 
+    id SERIAL, 
     nombre varchar(20), 
     fecha date, 
     contenido varchar(50), 
@@ -67,47 +68,49 @@ select * from post; --consultamos como quedo la tabla
 
 
 create table comentarios(
-    id int, 
+    id SERIAL, 
+    post_id int,
     fecha date, 
     hora time, 
     contenido varchar(30), 
-    FOREIGN KEY (id) references post(id)
+    primary key(id),
+    FOREIGN KEY (post_id) references post(id)
 );
 
 select * from comentarios; --consultamos como quedo la tabla
 
 -- post de pamela
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(1, now(), current_time, 'Comentario 1er post Pamela');
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(2, now(), current_time, 'Comentario 2 Pamela');
 
 --post de carlos
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(6, now(), current_time, 'Comentario 1 Carlos');
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(6, now(), current_time, 'Comentario 2 Carlos');
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(6, now(), current_time, 'Comentario 3 Carlos');
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(6, now(), current_time, 'Comentario 4 Carlos');
 
 -- post de margarita
 insert into post(
-id, nombre, fecha, contenido, descripcion) 
-values ( 7 , 'Margarita' , now() , 'post de Margarita', ' titulo 7' );
+id, nombre, fecha, contenido, descripcion,titulo) 
+values ( 7 , 'Margarita' , now() , 'post de Margarita','margarita', ' titulo 7' );
 
 select * from comentarios; --consultamos como quedo la tabla
 
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(7, now(), current_time, 'Comentario 1 para Margarita');
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(7, now(), current_time, 'Comentario 2 para Margarita');
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(7, now(), current_time, 'Comentario 3 para Margarita');
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(7, now(), current_time, 'Comentario 4 para Margarita');
-insert into comentarios(id, fecha, hora, contenido)
+insert into comentarios(post_id, fecha, hora, contenido)
 values(7, now(), current_time, 'Comentario 5 para Margarita');
 
 select * from post; --consultamos como quedo la tabla
