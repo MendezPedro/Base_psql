@@ -1,6 +1,5 @@
+\c postgres
 --elimino data y tablas preexistentes
-drop table comentarios;
-drop table post;
 drop database posts;
 --creo database posts
 create database posts;
@@ -21,16 +20,16 @@ select * from post; --consultamos como quedo la tabla
 
 --inserto 3 post
 insert into post(
-id, nombre, fecha, contenido, descripcion) 
-values(1, 'Pamela', now(), 'El primer post de Pamela', 'Hola soy Pamela');
+nombre, fecha, contenido, descripcion) 
+values('Pamela', now(), 'El primer post de Pamela', 'Hola soy Pamela');
 
 insert into post(
-id, nombre, fecha, contenido, descripcion) 
-values(2, 'Pamela', now(), 'El segundo post de Pamela', 'Chao soy Pamela');
+nombre, fecha, contenido, descripcion) 
+values('Pamela', now(), 'El segundo post de Pamela', 'Chao soy Pamela');
 
 insert into post(
-id, nombre, fecha, contenido, descripcion) 
-values(3, 'Carlos', now(), 'El primer post de Carlos', 'Hola soy Carlos');
+nombre, fecha, contenido, descripcion) 
+values('Carlos', now(), 'El primer post de Carlos', 'Hola soy Carlos');
 
 
 
@@ -47,12 +46,12 @@ update post set titulo = 'Titulo 3' where id = 3;
 
 -- agrego 2 post nuevos
 insert into post(
-id, nombre, fecha, contenido, descripcion, titulo) 
-values(4, 'Pedro', now(), 'El primer post de Pedro', 'hola soy Pedro', 'Titulo 4');
+nombre, fecha, contenido, descripcion, titulo) 
+values('Pedro', now(), 'El primer post de Pedro', 'hola soy Pedro', 'Titulo 4');
 
 insert into post(
-id, nombre, fecha, contenido, descripcion, titulo) 
-values(5, 'Pedro', now(), 'El segundo post de Pedro', 'Chao soy Pedro', 'Titulo 5');
+nombre, fecha, contenido, descripcion, titulo) 
+values('Pedro', now(), 'El segundo post de Pedro', 'Chao soy Pedro', 'Titulo 5');
 
 select * from post; --consultamos como quedo la tabla
 
@@ -61,8 +60,8 @@ delete from post where nombre = 'Carlos';
 
 -- inserto un post de carlos
 insert into post(
-id, nombre, fecha, contenido, descripcion, titulo) 
-values(6, 'Carlos', now(), 'El segundo post de Carlos', 'Volví', 'Titulo 6');
+nombre, fecha, contenido, descripcion, titulo) 
+values('Carlos', now(), 'El segundo post de Carlos', 'Volví', 'Titulo 6');
 
 select * from post; --consultamos como quedo la tabla
 
